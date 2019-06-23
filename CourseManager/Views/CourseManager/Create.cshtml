@@ -1,0 +1,66 @@
+﻿@model CourseManager.Models.CourseManager
+@using CourseManager .Models
+
+@{
+    ViewBag.Title = "Create";
+    var classes = (List<Classes>)ViewBag.Classes;
+    var teachers = (List<Teachers>)ViewBag.Teachers;
+    var courses = (List<Course>)ViewBag.Courses;
+}
+}
+
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>CourseManager</legend>
+
+        <div class="editor-label">
+         
+        </div>
+        <div class="editor-field">
+         <select name ="ClassId" class ="form-control">
+             @foreach (var cls in classes)
+             {
+                 <option value ="@cls .Id">@cls .Name</option>  
+             }
+         </select>  
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseId)
+        </div>
+           <select name ="TeacherId" class ="form-control">
+             @foreach (var cls in teachers )
+             {
+                 <option value ="@cls .Id">@cls .Name</option>  
+             }
+         </select>  
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TeacherId)
+        </div>
+        <div class="editor-field">
+            <select name ="CourseId" class ="form-control">
+             @foreach (var cls in courses )
+             {
+                 <option value ="@cls .Id">@cls .Name</option>  
+             }
+         </select>  
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
